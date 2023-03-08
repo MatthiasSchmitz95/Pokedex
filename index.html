@@ -10,7 +10,7 @@
     <script src="script.js"></script>
 </head>
 
-<body onload="getInformation()">
+<body onload="renderFrontPage()">
 
     <nav class="navbar">
         <h1>Pokedex</h1>
@@ -18,15 +18,19 @@
         <button>Search</button>
     </nav>
 
+    <div id="card"></div>
+    <div id="pokemonHeader" style="display:none">
+
+
+    </div>
+    <div id="pokeInfo" style="display:none">
+        <img id="pokemonImage">
+
+    </div>
+
     <div class="main-container" id="main-container">
-        <div id="pokemonHeader" style="display:none">
 
 
-        </div>
-        <div id="pokeInfo"style="display:none">
-            <img id="pokemonImage" >
-
-        </div>
 
     </div>
 
