@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,16 +9,27 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
+
 <body onload="getInformation()">
-    <div id="pokemonHeader">
-        
+
+    <nav class="navbar">
+        <h1>Pokedex</h1>
+        <input type="text">
+        <button>Search</button>
+    </nav>
+
+    <div class="main-container" id="main-container">
+        <div id="pokemonHeader" style="display:none">
+
+
+        </div>
+        <div id="pokeInfo"style="display:none">
+            <img id="pokemonImage" >
+
+        </div>
 
     </div>
-    <img id="pokemonImage">
-
-    </div>
-
-
 
 </body>
+
 </html>

@@ -1,11 +1,39 @@
 body{
     margin: 0px;
+    background: url(img/bg.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+
 }
+.navbar{
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: blueviolet;
+}
+.main-container{
+    
+    
+}
+
+
 
 #pokemonHeader{
     background-color: grey;
     height: 30vh;
     color: white;
     font-size: 60px;
+}
+
+#pokeInfo{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-top: -50px;
+    min-height: 200px;
+    background-color: white;
 
 }
