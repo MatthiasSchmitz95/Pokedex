@@ -14,26 +14,35 @@
 
     <nav class="navbar">
         <h1>Pokedex</h1>
-        <input type="text">
-        <button>Search</button>
+        <input type="text" id="search" placeholder="search" style="text-transform: lowercase;">
+        <button onclick="getInformation()">Search</button>
     </nav>
 
-    <div id="card"></div>
-    <div id="pokemonHeader" style="display:none">
+        <div class="main-container" id="main-container">
+            <div id="card-container" style="display:none" onclick="hideCard()">
+            <div id="card">
+                <div id="pokemonHeader">
+                    
+    
+    
+                </div>
+                <div id="pokeInfo">
+                    <img id="pokemonImage">
+                    <div id="type-container">
 
+                    </div>
+                    
+                    
+                    <table id="stats">
 
-    </div>
-    <div id="pokeInfo" style="display:none">
-        <img id="pokemonImage">
+                    </table>
+                </div>
+            </div>
+        </div>
 
-    </div>
+        </div>
 
-    <div class="main-container" id="main-container">
-
-
-
-    </div>
-
+    
 </body>
 
 </html>
