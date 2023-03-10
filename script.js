@@ -47,7 +47,7 @@ function showCard(){
 
 function hideCard(){
     document.getElementById('card-container').style.display ='none';
-    document.getElementById('search').innerHTML ='';
+    document.getElementById('search').value ='';
 }
 
 function showFrontPokemon(i){
