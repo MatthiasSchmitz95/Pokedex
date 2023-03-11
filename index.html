@@ -18,31 +18,25 @@
         <button onclick="getInformation()">Search</button>
     </nav>
 
-        <div class="main-container" id="main-container">
-            <div id="card-container" style="display:none" onclick="hideCard()">
-            <div id="card">
-                <div id="pokemonHeader">
-                    
-    
-    
-                </div>
-                <div id="pokeInfo">
-                    <img id="pokemonImage">
-                    <div id="type-container">
+    <div>
+        <button class="btn-poke-list" onclick="renderSecondPage(1,100)">1-99</button>
+        <button class="btn-poke-list" onclick="renderSecondPage(100,200)">100-199</button>
+        <button class="btn-poke-list" onclick="renderSecondPage(200,300)" >200-299</button>
+        <button class="btn-poke-list" onclick="renderSecondPage(300,400)" >300-399</button>
+        <button class="btn-poke-list" onclick="renderSecondPage(400,500)" >400-499</button>
+        <button class="btn-poke-list" onclick="renderSecondPage(500,600)" >500-599</button>
+        <button class="btn-poke-list" onclick="renderSecondPage(600,700)" >600-699</button>
+        <button class="btn-poke-list" onclick="renderSecondPage(700,800)" >700-799</button>
+        <button class="btn-poke-list" onclick="renderSecondPage(800,900)" >800-899</button>
+        <button class="btn-poke-list" onclick="renderSecondPage(900,1000)" >900-999</button>
+    </div>
 
-                    </div>
-                    
-                    
-                    <table id="stats">
+    <div class="main-container" id="main-container">
 
-                    </table>
-                </div>
-            </div>
-        </div>
 
-        </div>
+    </div>
 
-    
+
 </body>
 
 </html>
