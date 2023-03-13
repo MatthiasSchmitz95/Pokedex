@@ -6,8 +6,8 @@ let pokemons = [];
 let stats;
 let pokemon;
 let results;
-let pokeNrFrom = 1;
-let PokeNrTo = 100;
+let pokeNrFrom = 0;
+let PokeNrTo = 99;
 
 async function getInformation() {
     let input = document.getElementById('search').value;
@@ -25,35 +25,40 @@ async function getInformation() {
 }
 
 async function renderFrontPage() {
-    //  let url = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0';
-    //  let response = await fetch(url);
-    //  responseAsJson = await response.json();
-    //  let currentPokemon = responseAsJson['results'];
-   // console.log('informatio', currentPokemon);
+    let url = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0';
+    let response = await fetch(url);
+    responseAsJson = await response.json();
+    let currentPokemon = responseAsJson['results'];
+    for (let i = 0; i < currentPokemon.length; i++) {
+        const pokemon = currentPokemon[i]['name'];
+        pokemons.push(pokemon);
+        
+    }
+    loadPokemon();
+}
+    async function loadPokemon(){
     for (let i = pokeNrFrom; i < PokeNrTo; i++) {
-        let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
+        let url = `https://pokeapi.co/api/v2/pokemon/${pokemons[i]}`;
         let response = await fetch(url);
         responseAsJson = await response.json();
         let currentPokemon = responseAsJson;
         //console.log('information', currentPokemon);
         pokeName = currentPokemon['name'];
-        pokeImage = currentPokemon['sprites']['front_default'];
-        pokemons.push(currentPokemon['name']);
+        pokeImage = currentPokemon['sprites']['front_default']
         document.getElementById('main-container').innerHTML += `
-        <div class="poke-box"><img class="pokemon" src="${pokeImage}" onclick="showFrontPokemon(${i-1});window.scrollTo(0, 0)">
+        <div class="poke-box"><img class="pokemon" src="${pokeImage}" onclick="showFrontPokemon(${i});window.scrollTo(0, 0)">
         ${pokeName}
         </div>
         `;
     }
-    console.log(pokemons);
-}
+    console.log(pokemons);}
+
 
 function renderSecondPage(startNr, endNr) {
-    pokemons = [];
     document.getElementById('main-container').innerHTML = '';
     pokeNrFrom = startNr;
     PokeNrTo = endNr;
-    renderFrontPage();
+    loadPokemon();
     console.log(pokemons);
 }
 
