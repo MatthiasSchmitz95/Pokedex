@@ -14,22 +14,25 @@
 
     <nav class="navbar">
         <h1>Pokedex</h1>
-        <input type="text" id="search" placeholder="search" style="text-transform: lowercase;">
-        <button onclick="getInformation()">Search</button>
+        <div>
+            <input type="text" id="search" placeholder="search" style="text-transform: lowercase;">
+            <button onclick="getInformation();filterPokemons()">Search</button>
+        </div>
+        <div class="flex">
+            <button class="btn-poke-list" onclick="renderSecondPage(0,99)">1-99</button>
+            <button class="btn-poke-list" onclick="renderSecondPage(99,199)">100-199</button>
+            <button class="btn-poke-list" onclick="renderSecondPage(199,299)">200-299</button>
+            <button class="btn-poke-list" onclick="renderSecondPage(299,399)">300-399</button>
+            <button class="btn-poke-list" onclick="renderSecondPage(399,499)">400-499</button>
+            <button class="btn-poke-list" onclick="renderSecondPage(499,599)">500-599</button>
+            <button class="btn-poke-list" onclick="renderSecondPage(599,699)">600-699</button>
+            <button class="btn-poke-list" onclick="renderSecondPage(699,799)">700-799</button>
+            <button class="btn-poke-list" onclick="renderSecondPage(799,899)">800-899</button>
+            <button class="btn-poke-list" onclick="renderSecondPage(899,999)">900-999</button>
+        </div>
     </nav>
 
-    <div>
-        <button class="btn-poke-list" onclick="renderSecondPage(0,99)">1-99</button>
-        <button class="btn-poke-list" onclick="renderSecondPage(100,199)">100-199</button>
-        <button class="btn-poke-list" onclick="renderSecondPage(200,299)" >200-299</button>
-        <button class="btn-poke-list" onclick="renderSecondPage(300,399)" >300-399</button>
-        <button class="btn-poke-list" onclick="renderSecondPage(400,499)" >400-499</button>
-        <button class="btn-poke-list" onclick="renderSecondPage(500,599)" >500-599</button>
-        <button class="btn-poke-list" onclick="renderSecondPage(600,699)" >600-699</button>
-        <button class="btn-poke-list" onclick="renderSecondPage(700,799)" >700-799</button>
-        <button class="btn-poke-list" onclick="renderSecondPage(800,899)" >800-899</button>
-        <button class="btn-poke-list" onclick="renderSecondPage(900,999)" >900-999</button>
-    </div>
+
 
     <div class="main-container" id="main-container">
 
