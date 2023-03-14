@@ -1,9 +1,10 @@
 let responseAsJson;
+let id;
 let pokeName;
 let pokeImage;
+let stats;
 let currentPokemon;
 let pokemons = [];
-let stats;
 let pokemon;
 let results;
 let pokeNrFrom = 0;
@@ -15,9 +16,9 @@ let statNumbers = [];
 async function filterPokemons() {
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
-    console.log(search);
-    document.getElementById('main-container').innerHTML = '';
-
+    document.getElementById('main-container').innerHTML = ` 
+    <div id="card-container" style="display:none" onclick="hideCard()">
+    </div>`;
     for (let i = 0; i < pokemons.length; i++) {
         let name = pokemons[i];
         let url = `https://pokeapi.co/api/v2/pokemon/${pokemons[i]}`;
@@ -28,7 +29,7 @@ async function filterPokemons() {
         pokeImage = currentPokemon['sprites']['front_default']
         if (name.toLowerCase().includes(search)) {
             document.getElementById('main-container').innerHTML += `
-            <div class="poke-box"><img class="pokemon" src="${pokeImage}" onclick="showFrontPokemon(${i});window.scrollTo(0, 0)">
+            <div class="poke-box"><img class="pokemon" src="${pokeImage}" onclick="showClickedPokemon(${i})">
             ${pokeName}
             </div>
             `;
@@ -49,7 +50,8 @@ async function getInformation() {
     pokeImage = currentPokemon['sprites']['front_default'];
     type = currentPokemon['types']['0']['type']['name'];
     stats = currentPokemon['stats'];
-    //console.log('Pokemon information', responseAsJson);
+    id = currentPokemon['id'];
+    console.log('Pokemon information', responseAsJson);
     showPokemon();
 }
 
@@ -74,12 +76,12 @@ async function loadPokemon() {
         pokeName = currentPokemon['name'];
         pokeImage = currentPokemon['sprites']['front_default']
         document.getElementById('main-container').innerHTML += `
-        <div class="poke-box"><img class="pokemon" src="${pokeImage}" onclick="showFrontPokemon(${i})">
+        <div class="poke-box"><img class="pokemon" src="${pokeImage}" onclick="showClickedPokemon(${i})">
         ${pokeName}
         </div>
         `;
     }
-    console.log(pokemons);
+    //console.log(pokemons);
 }
 
 
@@ -90,7 +92,7 @@ function renderSecondPage(startNr, endNr) {
     pokeNrFrom = startNr;
     PokeNrTo = endNr;
     loadPokemon();
-    console.log(pokemons);
+    //console.log(pokemons);
 }
 
 function showCard() {
@@ -99,10 +101,11 @@ function showCard() {
 
 function hideCard() {
     document.getElementById('card-container').style.display = 'none';
+    document.getElementById('card-container').innerHTML ='';
     document.getElementById('search').value = '';
 }
 
-function showFrontPokemon(i) {
+function showClickedPokemon(i) {
     document.getElementById('search').value = pokemons[i];
     renderCard();
     getInformation();
@@ -111,50 +114,60 @@ function showFrontPokemon(i) {
 
 function renderCard() {
     document.getElementById('card-container').innerHTML = `
-    
-        <div id="card">
-        <div id="pokemonHeader">
-        </div>
+<div id="card">
+    <div id="pokemonHeader">
+    </div>
         <div id="pokeInfo">
             <img id="pokemonImage">
+
             <div id="type-container">
             </div>
 
-            <canvas id="stats">
-
+            <canvas id="stats" width="50" height="20">
             </canvas>
-        </div>
-    </div>
-</div>`;
 
+            <div id="moves">
+            </div>
+        </div>
+</div>`;
 }
 
 function showPokemon() {
-    statNames=[];
-    statNumbers=[];
+    statNames = [];
+    statNumbers = [];
+    showCard();
     renderCard();
-    document.getElementById('stats').innerHTML = '';
-    document.getElementById('type-container').innerHTML = '';
-    document.getElementById('pokemonHeader').innerHTML = `${pokeName}
+    renderHeader();
+    renderStats();
+    //console.log(statNames, statNumbers);
+    drawChart();
+    typeCheck();
+
+}
+
+function renderHeader(){
+    document.getElementById('pokemonHeader').innerHTML = `${pokeName}#${id}
     `;
     document.getElementById('pokemonImage').src = pokeImage;
+}
+
+function renderStats(){
     for (let i = 0; i < stats.length; i++) {
         let stat = stats[i]['base_stat'];
         let statName = stats[i]['stat']['name'];
         statNames.push(statName);
         statNumbers.push(stat);
     }
-    console.log(statNames,statNumbers);
-    drawChart();
-    typeCheck();
-    showCard();
+
 }
+
+
 
 function typeCheck() {
     if (type == 'grass' || type == 'bug') {
         document.getElementById('pokemonHeader').style.backgroundColor = "green";
     }
-    if (type == 'water') {
+    if (type == 'water' || type == 'steel') {
         document.getElementById('pokemonHeader').style.backgroundColor = "blue";
     }
     if (type == 'normal') {
@@ -180,14 +193,56 @@ function drawChart() {
     const ctx = document.getElementById('stats');
 
     new Chart(ctx, {
-        type: 'radar',
+        type: 'bar',
         data: {
             labels: statNames,
             datasets: [{
+                axis: 'y',
                 label: 'stats',
                 data: statNumbers,
-                borderWidth: 2
-            }]
-        }
+                fill: false,
+                borderWidth: 1
+            }
+            ]
+        },
+        options: {
+            plugins: {
+                legend: {
+                  display: false
+                }
+              },
+            layout: {
+                padding: {
+                    left: 50,
+                    right:50
+                }
+            },
+            indexAxis: 'y',
+            scales: {
+                
+                x: {
+                    display:false,
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        display: false
+                    }
+                },
+                y: {
+                    border:{
+                        display:false
+                    },
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        crossAlign: "far",
+                      },
+
+                }
+            }  
+        },
+        plugins: [ChartDataLabels]
     });
 }

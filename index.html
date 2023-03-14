@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
 </head>
 
 <body onload="renderFrontPage()">
@@ -17,7 +18,7 @@
         <h1>Pokedex</h1>
         <div>
             <input type="text" id="search" placeholder="search" style="text-transform: lowercase;">
-            <button onclick="getInformation();filterPokemons()">Search</button>
+            <button onclick="filterPokemons()">Search</button>
         </div>
         <div class="flex">
             <button class="btn-poke-list" onclick="renderSecondPage(0,99)">1-99</button>
