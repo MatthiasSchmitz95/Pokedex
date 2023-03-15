@@ -193,7 +193,7 @@ function drawChart() {
     const ctx = document.getElementById('stats');
 
     new Chart(ctx, {
-        type: 'bar',
+        type: 'doughnut',
         data: {
             labels: statNames,
             datasets: [{
@@ -206,11 +206,7 @@ function drawChart() {
             ]
         },
         options: {
-            plugins: {
-                legend: {
-                  display: false
-                }
-              },
+          
             layout: {
                 padding: {
                     left: 50,
@@ -237,6 +233,7 @@ function drawChart() {
                         display: false
                     },
                     ticks: {
+                        display:false,
                         crossAlign: "far",
                       },
 
