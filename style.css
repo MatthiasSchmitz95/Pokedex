@@ -7,6 +7,10 @@ body{
     background-size: cover;
 }
 
+input{
+    width:200px;
+}
+
 button{
     cursor: pointer;
 }
@@ -44,6 +48,7 @@ table{
     background-color: #902320;
     color: white;
     padding-left: 20px;
+    padding-right: 20px;
 }
 
 #search{
@@ -148,4 +153,29 @@ table{
 
 #typ-container{
     margin-bottom: 30px;
+}
+
+@media(max-width:1000px){
+    .flex{
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+    }
+}
+
+@media(max-width:750px){
+    .flex{
+        display: none;
+    }
+
+    .hamburger-menu{
+        display: block;
+    }
+    input{
+        margin-left: 4px !important;
+        margin-right: 4px;
+        width: 100px;
+    }
+    .navbar{
+        justify-content: space-between;
+    }
 }
