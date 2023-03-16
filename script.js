@@ -146,7 +146,15 @@ function showPokemon() {
 }
 
 function renderHeader(){
-    document.getElementById('pokemonHeader').innerHTML = `${pokeName}#${id}
+    document.getElementById('pokemonHeader').innerHTML = `
+    <div class="name-box">
+    <div>
+    ${pokeName}
+    </div>
+    <div>
+    #${id}
+    </div>
+    </div>
     `;
     document.getElementById('pokemonImage').src = pokeImage;
 }

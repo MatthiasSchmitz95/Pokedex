@@ -20,7 +20,7 @@ table{
 }
 
 .hamburger-menu{
-    display: block;
+    display: none;
     cursor: pointer;
 
 }
@@ -54,6 +54,13 @@ table{
     display: flex;
     justify-content: center;
     
+}
+
+.name-box{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 
