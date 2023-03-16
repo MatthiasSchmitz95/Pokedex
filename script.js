@@ -28,15 +28,18 @@ async function filterPokemons() {
         pokeName = currentPokemon['name'];
         pokeImage = currentPokemon['sprites']['front_default']
         if (name.toLowerCase().includes(search)) {
-            document.getElementById('main-container').innerHTML += `
-            <div class="poke-box"><img class="pokemon" src="${pokeImage}" onclick="showClickedPokemon(${i})">
-            ${pokeName}
-            </div>
-            `;
+            renderPokeHeader();
 
         }
-
     }
+}
+
+function renderPokeHeader(){
+    document.getElementById('main-container').innerHTML += `
+    <div class="poke-box"><img class="pokemon" src="${pokeImage}" onclick="showClickedPokemon(${i})">
+    ${pokeName}
+    </div>
+    `;
 
 }
 
@@ -51,7 +54,6 @@ async function getInformation() {
     type = currentPokemon['types']['0']['type']['name'];
     stats = currentPokemon['stats'];
     id = currentPokemon['id'];
-    console.log('Pokemon information', responseAsJson);
     showPokemon();
 }
 
@@ -81,7 +83,7 @@ async function loadPokemon() {
         </div>
         `;
     }
-    //console.log(pokemons);
+
 }
 
 
@@ -92,7 +94,7 @@ function renderSecondPage(startNr, endNr) {
     pokeNrFrom = startNr;
     PokeNrTo = endNr;
     loadPokemon();
-    //console.log(pokemons);
+  
 }
 
 function showCard() {
@@ -101,7 +103,7 @@ function showCard() {
 
 function hideCard() {
     document.getElementById('card-container').style.display = 'none';
-    document.getElementById('card-container').innerHTML ='';
+    document.getElementById('card-container').innerHTML = '';
     document.getElementById('search').value = '';
 }
 
@@ -145,7 +147,7 @@ function showPokemon() {
 
 }
 
-function renderHeader(){
+function renderHeader() {
     document.getElementById('pokemonHeader').innerHTML = `
     <div class="name-box">
     <div>
@@ -159,7 +161,7 @@ function renderHeader(){
     document.getElementById('pokemonImage').src = pokeImage;
 }
 
-function renderStats(){
+function renderStats() {
     for (let i = 0; i < stats.length; i++) {
         let stat = stats[i]['base_stat'];
         let statName = stats[i]['stat']['name'];
@@ -175,10 +177,10 @@ function typeCheck() {
     if (type == 'grass' || type == 'bug') {
         document.getElementById('pokemonHeader').style.backgroundColor = "green";
     }
-    if (type == 'water' || type == 'steel') {
+    if (type == 'water' || type == 'ice') {
         document.getElementById('pokemonHeader').style.backgroundColor = "blue";
     }
-    if (type == 'normal') {
+    if (type == 'normal' || type == 'steel') {
         document.getElementById('pokemonHeader').style.backgroundColor = "grey";
     }
     if (type == 'poison' || type == 'psychic') {
@@ -214,18 +216,18 @@ function drawChart() {
             ]
         },
         options: {
-          
+
             layout: {
                 padding: {
                     left: 50,
-                    right:50
+                    right: 50
                 }
             },
             indexAxis: 'y',
             scales: {
-                
+
                 x: {
-                    display:false,
+                    display: false,
                     grid: {
                         display: false
                     },
@@ -234,19 +236,19 @@ function drawChart() {
                     }
                 },
                 y: {
-                    border:{
-                        display:false
+                    border: {
+                        display: false
                     },
                     grid: {
                         display: false
                     },
                     ticks: {
-                        display:false,
+                        display: false,
                         crossAlign: "far",
-                      },
+                    },
 
                 }
-            }  
+            }
         },
         plugins: [ChartDataLabels]
     });
