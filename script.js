@@ -21,6 +21,7 @@ function show(){
 
 async function filterPokemons() {
     search = document.getElementById('search').value;
+    translateGer();
     search = search.toLowerCase();
     renderCardContainer();
     for (let i = 0; i < pokemons.length; i++) {
