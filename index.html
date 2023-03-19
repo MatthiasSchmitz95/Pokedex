@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="germancheck.js"></script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
@@ -20,19 +21,19 @@
             <input type="text" id="search" placeholder="search" style="text-transform: lowercase;">
             <button onclick="filterPokemons()">Search</button>
         </div>
-        <div class="flex">
-            <button class="btn-poke-list" onclick="renderSecondPage(0,99)">1-99</button>
-            <button class="btn-poke-list" onclick="renderSecondPage(99,199)">100-199</button>
-            <button class="btn-poke-list" onclick="renderSecondPage(199,299)">200-299</button>
-            <button class="btn-poke-list" onclick="renderSecondPage(299,399)">300-399</button>
-            <button class="btn-poke-list" onclick="renderSecondPage(399,499)">400-499</button>
-            <button class="btn-poke-list" onclick="renderSecondPage(499,599)">500-599</button>
-            <button class="btn-poke-list" onclick="renderSecondPage(599,699)">600-699</button>
-            <button class="btn-poke-list" onclick="renderSecondPage(699,799)">700-799</button>
-            <button class="btn-poke-list" onclick="renderSecondPage(799,899)">800-899</button>
-            <button class="btn-poke-list" onclick="renderSecondPage(899,999)">900-999</button>
+        <div class="flex" id="flex">
+            <a class="btn-poke-list" onclick="renderSecondPage(0,99)">1-99</a>
+            <a class="btn-poke-list" onclick="renderSecondPage(99,199)">100-199</a>
+            <a class="btn-poke-list" onclick="renderSecondPage(199,299)">200-299</a>
+            <a class="btn-poke-list" onclick="renderSecondPage(299,399)">300-399</a>
+            <a class="btn-poke-list" onclick="renderSecondPage(399,499)">400-499</a>
+            <a class="btn-poke-list" onclick="renderSecondPage(499,599)">500-599</a>
+            <a class="btn-poke-list" onclick="renderSecondPage(599,699)">600-699</a>
+            <a class="btn-poke-list" onclick="renderSecondPage(699,799)">700-799</a>
+            <a class="btn-poke-list" onclick="renderSecondPage(799,899)">800-899</a>
+            <a class="btn-poke-list" onclick="renderSecondPage(899,999)">900-999</a>
         </div>
-        <div class="hamburger-menu">
+        <div class="hamburger-menu" onclick="show()">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>

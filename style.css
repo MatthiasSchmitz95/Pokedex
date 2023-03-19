@@ -58,7 +58,17 @@ table{
 .flex{
     display: flex;
     justify-content: center;
-    
+}
+
+.flex a{
+    margin-left:10px;
+    margin-right:10px;
+    cursor: pointer;
+}
+
+.flex a:hover{
+    color:rgb(0, 51, 255);
+    transition: 70ms ease-in-out;
 }
 
 .name-box{
@@ -155,16 +165,28 @@ table{
     margin-bottom: 30px;
 }
 
-@media(max-width:1000px){
+@media(max-width:1153px){
     .flex{
         display: grid;
         grid-template-columns: auto auto auto auto auto;
     }
 }
 
-@media(max-width:750px){
+@media(max-width:811px){
     .flex{
-        display: none;
+        position: fixed;
+        left: 0;
+        top:-100%;
+    }
+
+
+    .flex-active{
+        position: absolute;
+        background-color:#902320 ;
+        top: 71px;
+        width:100%;
+        z-index: 4;
+        border: none;
     }
 
     .hamburger-menu{

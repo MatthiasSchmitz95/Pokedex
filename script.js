@@ -11,14 +11,18 @@ let pokeNrFrom = 0;
 let PokeNrTo = 99;
 let statNames = [];
 let statNumbers = [];
+let search;
+
+
+function show(){
+    document.getElementById('flex').classList.add('flex-active');
+}
 
 
 async function filterPokemons() {
-    let search = document.getElementById('search').value;
+    search = document.getElementById('search').value;
     search = search.toLowerCase();
-    document.getElementById('main-container').innerHTML = ` 
-    <div id="card-container" style="display:none" onclick="hideCard()">
-    </div>`;
+    renderCardContainer();
     for (let i = 0; i < pokemons.length; i++) {
         let name = pokemons[i];
         let url = `https://pokeapi.co/api/v2/pokemon/${pokemons[i]}`;
@@ -28,18 +32,22 @@ async function filterPokemons() {
         pokeName = currentPokemon['name'];
         pokeImage = currentPokemon['sprites']['front_default']
         if (name.toLowerCase().includes(search)) {
-            renderPokeHeader();
+            document.getElementById('main-container').innerHTML += `
+            <div class="poke-box"><img class="pokemon" src="${pokeImage}" onclick="showClickedPokemon(${i})">
+            ${pokeName}
+            </div>
+            `;
 
         }
+
     }
+
 }
 
-function renderPokeHeader(){
-    document.getElementById('main-container').innerHTML += `
-    <div class="poke-box"><img class="pokemon" src="${pokeImage}" onclick="showClickedPokemon(${i})">
-    ${pokeName}
-    </div>
-    `;
+function renderCardContainer() {
+    document.getElementById('main-container').innerHTML = ` 
+    <div id="card-container" style="display:none" onclick="hideCard()">
+    </div>`;
 
 }
 
@@ -94,7 +102,7 @@ function renderSecondPage(startNr, endNr) {
     pokeNrFrom = startNr;
     PokeNrTo = endNr;
     loadPokemon();
-  
+
 }
 
 function showCard() {
@@ -141,7 +149,6 @@ function showPokemon() {
     renderCard();
     renderHeader();
     renderStats();
-    //console.log(statNames, statNumbers);
     drawChart();
     typeCheck();
 
@@ -194,6 +201,9 @@ function typeCheck() {
     }
     if (type == 'fire') {
         document.getElementById('pokemonHeader').style.backgroundColor = "red";
+    }
+    if (type == 'fairy') {
+        document.getElementById('pokemonHeader').style.backgroundColor = "pink";
     }
     document.getElementById('type-container').innerHTML += `Typ: ${type}`;
 
