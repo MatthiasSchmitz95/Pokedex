@@ -14,14 +14,9 @@ let statNumbers = [];
 let search;
 
 
-function show(){
-    document.getElementById('flex').classList.add('flex-active');
-}
-
 
 async function filterPokemons() {
     search = document.getElementById('search').value;
-    translateGer();
     search = search.toLowerCase();
     renderCardContainer();
     for (let i = 0; i < pokemons.length; i++) {
@@ -79,7 +74,7 @@ async function renderFrontPage() {
 }
 
 async function loadPokemon() {
-    for (let i = pokeNrFrom; i < PokeNrTo; i++) {
+    for (let i = +pokeNrFrom; i < +PokeNrTo; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${pokemons[i]}`;
         let response = await fetch(url);
         responseAsJson = await response.json();
@@ -96,7 +91,14 @@ async function loadPokemon() {
 }
 
 
-function renderSecondPage(startNr, endNr) {
+function getValues(){
+    let a = document.getElementById('poke-list').value;
+    let array = a.split(",");
+    console.log(array[0],array[1]);
+    renderSecondPage(array[0],array[1]);
+}
+
+function renderSecondPage(startNr,endNr) {
     document.getElementById('main-container').innerHTML = ` 
     <div id="card-container" style="display:none" onclick="hideCard()">
     </div>`;

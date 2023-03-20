@@ -23,11 +23,6 @@ table{
     padding-left: 30px;
 }
 
-.hamburger-menu{
-    display: none;
-    cursor: pointer;
-
-}
 
 .bar{
     border-radius: 10px;
@@ -189,9 +184,6 @@ table{
         border: none;
     }
 
-    .hamburger-menu{
-        display: block;
-    }
     input{
         margin-left: 4px !important;
         margin-right: 4px;

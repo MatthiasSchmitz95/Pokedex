@@ -7,9 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="germancheck.js"></script>
     <script src="script.js"></script>
-    <script src="translation.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
 </head>
@@ -23,21 +21,21 @@
             <button onclick="filterPokemons()">Search</button>
         </div>
         <div class="flex" id="flex">
-            <a class="btn-poke-list" onclick="renderSecondPage(0,99)">1-99</a>
-            <a class="btn-poke-list" onclick="renderSecondPage(99,199)">100-199</a>
-            <a class="btn-poke-list" onclick="renderSecondPage(199,299)">200-299</a>
-            <a class="btn-poke-list" onclick="renderSecondPage(299,399)">300-399</a>
-            <a class="btn-poke-list" onclick="renderSecondPage(399,499)">400-499</a>
-            <a class="btn-poke-list" onclick="renderSecondPage(499,599)">500-599</a>
-            <a class="btn-poke-list" onclick="renderSecondPage(599,699)">600-699</a>
-            <a class="btn-poke-list" onclick="renderSecondPage(699,799)">700-799</a>
-            <a class="btn-poke-list" onclick="renderSecondPage(799,899)">800-899</a>
-            <a class="btn-poke-list" onclick="renderSecondPage(899,999)">900-999</a>
-        </div>
-        <div class="hamburger-menu" onclick="show()">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+            
+            <label for="pokemons">Choose a pokemonlist:</label>
+            <select  name="poke-list" id="poke-list" onchange="getValues()">
+                <option value="0,99">1-99</option>
+                <option value="99,199">100-199</option>
+                <option value="199,299">200-299</option>
+                <option value="299,399">300-399</option>
+                <option value="399,499">400-499</option>
+                <option value="499,599">500-599</option>
+                <option value="599,699">600-699</option>
+                <option value="699,799">700-799</option>
+                <option value="799,899">800-899</option>
+                <option value="899,999">900-999</option>
+              </select>
+
         </div>
     </nav>
 
@@ -46,8 +44,6 @@
     <div class="main-container" id="main-container">
         <div id="card-container" style="display:none" onclick="hideCard()">
         </div>
-
-
     </div>
 
 
