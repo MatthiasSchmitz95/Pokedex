@@ -80,12 +80,19 @@ async function loadPokemon() {
         responseAsJson = await response.json();
         let currentPokemon = responseAsJson;
         pokeName = currentPokemon['name'];
-        pokeImage = currentPokemon['sprites']['front_default']
+        pokeImage = currentPokemon['sprites']['front_default'];
+        type = currentPokemon['types']['0']['type']['name'];
+        
         document.getElementById('main-container').innerHTML += `
-        <div class="poke-box"><img class="pokemon" src="${pokeImage}" onclick="showClickedPokemon(${i})">
-        ${pokeName}
+        <div class="poke-box" onclick="showClickedPokemon(${i})">
+            <img class="pokemon" src="${pokeImage}" >
+            <div id="name-container${i}" class="name-container" >
+                ${pokeName}
+            </div>
         </div>
         `;
+        typeCheck('name-container'+i);
+        
     }
 
 }
@@ -153,7 +160,8 @@ function showPokemon() {
     renderHeader();
     renderStats();
     drawChart();
-    typeCheck();
+    typeCheck('pokemonHeader');
+    document.getElementById('type-container').innerHTML += `Typ: ${type}`;
 
 }
 
@@ -183,32 +191,38 @@ function renderStats() {
 
 
 
-function typeCheck() {
+function typeCheck(id) {
     if (type == 'grass' || type == 'bug') {
-        document.getElementById('pokemonHeader').style.backgroundColor = "green";
+        document.getElementById(id).style.backgroundColor = "green";
     }
     if (type == 'water' || type == 'ice') {
-        document.getElementById('pokemonHeader').style.backgroundColor = "blue";
+        document.getElementById(id).style.backgroundColor = "blue";
     }
     if (type == 'normal' || type == 'steel') {
-        document.getElementById('pokemonHeader').style.backgroundColor = "grey";
+        document.getElementById(id).style.backgroundColor = "grey";
     }
     if (type == 'poison' || type == 'psychic') {
-        document.getElementById('pokemonHeader').style.backgroundColor = "purple";
+        document.getElementById(id).style.backgroundColor = "purple";
     }
     if (type == 'electric') {
-        document.getElementById('pokemonHeader').style.backgroundColor = "yellow";
+        document.getElementById(id).style.backgroundColor = "orange";
     }
     if (type == 'ground' || type == 'fighting' || type == 'rock') {
-        document.getElementById('pokemonHeader').style.backgroundColor = "brown";
+        document.getElementById(id).style.backgroundColor = "brown";
     }
     if (type == 'fire') {
-        document.getElementById('pokemonHeader').style.backgroundColor = "red";
+        document.getElementById(id).style.backgroundColor = "red";
     }
     if (type == 'fairy') {
-        document.getElementById('pokemonHeader').style.backgroundColor = "pink";
+        document.getElementById(id).style.backgroundColor = "pink";
     }
-    document.getElementById('type-container').innerHTML += `Typ: ${type}`;
+    if (type == 'dark' || type == 'ghost') {
+        document.getElementById(id).style.backgroundColor = "black";
+    }
+    if (type == 'dragon') {
+        document.getElementById(id).style.backgroundColor = "aqua";
+    }
+    
 
 }
 
