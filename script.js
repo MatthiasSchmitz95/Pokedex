@@ -26,7 +26,7 @@ async function filterPokemons() {
         responseAsJson = await response.json();
         let currentPokemon = responseAsJson;
         pokeName = currentPokemon['name'];
-        pokeImage = currentPokemon['sprites']['front_default']
+        pokeImage = currentPokemon['sprites']['other']['home']['front_default'];
         if (name.toLowerCase().includes(search)) {
             document.getElementById('main-container').innerHTML += `
             <div class="poke-box"><img class="pokemon" src="${pokeImage}" onclick="showClickedPokemon(${i})">
@@ -35,7 +35,6 @@ async function filterPokemons() {
             `;
 
         }
-
     }
 
 }
@@ -54,11 +53,12 @@ async function getInformation() {
     responseAsJson = await response.json();
     let currentPokemon = responseAsJson;
     pokeName = currentPokemon['name'];
-    pokeImage = currentPokemon['sprites']['front_default'];
+    pokeImage = currentPokemon['sprites']['other']['home']['front_default'];
     type = currentPokemon['types']['0']['type']['name'];
     stats = currentPokemon['stats'];
     id = currentPokemon['id'];
     showPokemon();
+    console.log(currentPokemon);
 }
 
 async function renderFrontPage() {
@@ -71,6 +71,7 @@ async function renderFrontPage() {
         pokemons.push(pokemon);
     }
     loadPokemon();
+    
 }
 
 async function loadPokemon() {
@@ -80,7 +81,7 @@ async function loadPokemon() {
         responseAsJson = await response.json();
         let currentPokemon = responseAsJson;
         pokeName = currentPokemon['name'];
-        pokeImage = currentPokemon['sprites']['front_default'];
+        pokeImage = currentPokemon['sprites']['other']['home']['front_default'];
         type = currentPokemon['types']['0']['type']['name'];
         
         document.getElementById('main-container').innerHTML += `
@@ -94,6 +95,7 @@ async function loadPokemon() {
         typeCheck('name-container'+i);
         
     }
+    
 
 }
 

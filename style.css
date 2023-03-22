@@ -94,6 +94,7 @@ table{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     min-height: 100vh;
+    z-index:10;
 }
 
 .poke-box{
@@ -113,6 +114,7 @@ table{
 .name-container{
     width:150px;
     display: flex;
+    align-items: center;
     justify-content: center;
     height: 100%;
     border-bottom-left-radius: 10px ;
@@ -120,8 +122,7 @@ table{
 }
 
 .poke-box img{
-    transform: scale(1.2);
-    height: 105px;
+    height: 100px;
 
 }
 
@@ -140,7 +141,7 @@ table{
     width: 400px;
     height:600px;
     z-index: 94;
-    pointer-events: none
+    pointer-events: none;
 
 }
 
@@ -170,8 +171,9 @@ table{
 }
 
 #pokeInfo img{
+    height: 150px;
     object-fit: scale-down;
-    margin-top: -64px;
+    margin-top: -134px;
 }
 
 #typ-container{
